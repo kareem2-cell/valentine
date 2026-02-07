@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Love Story ❤️</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+/* BODY BACKGROUND */
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fad0c4, #fbc2eb);
+background-size: 400% 400%;
+animation: gradientMove 12s ease infinite;
+position:relative;
+}
+
+/* GRADIENT ANIMATION */
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* FLOATING HEARTS */
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:20px;
+animation: floatUp linear infinite;
+opacity:0.6;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(1);
+opacity:0.6;
+}
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+}
+
+/* GLASS CARD */
+.card{
+position:relative;
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(15px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 8px 30px rgba(0,0,0,0.2);
+width:90%;
+max-width:400px;
+z-index:2;
+}
+
+/* TITLE */
+.title{
+font-family:'Pacifico', cursive;
+font-size:28px;
+color:white;
+margin-bottom:15px;
+}
+
+/* TEXT */
+.text{
+color:white;
+font-size:16px;
+margin-bottom:25px;
+}
+
+/* BUTTON */
+.btn{
+background:linear-gradient(45deg,#ff6ec4,#ff1493);
+border:none;
+padding:14px 30px;
+border-radius:30px;
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(255,105,180,0.6);
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px rgba(255,105,180,1);
+}
+
+/* CARTOON CHARACTER */
+.cartoon{
+position:absolute;
+right:-60px;
+bottom:-10px;
+width:70px;
+height:70px;
+}
+
+.face{
+width:70px;
+height:70px;
+background:#ffe0e9;
+border-radius:50%;
+position:relative;
+animation:bounce 2s infinite;
+}
+
+/* EYES */
+.eye{
+width:10px;
+height:10px;
+background:black;
+border-radius:50%;
+position:absolute;
+top:25px;
+}
+
+.eye.left{ left:18px; }
+.eye.right{ right:18px; }
+
+/* SMILE */
+.mouth{
+width:20px;
+height:10px;
+border-bottom:3px solid black;
+border-radius:0 0 20px 20px;
+position:absolute;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+transition:0.3s;
+}
+
+/* HAPPY SMILE ON BUTTON HOVER */
+.btn:hover ~ .cartoon .mouth{
+height:15px;
+border-bottom:4px solid black;
+}
+
+/* BOUNCE ANIMATION */
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+}
+
+/* POLAROIDS */
+.polaroid{
+position:absolute;
+width:90px;
+background:white;
+padding:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+border-radius:5px;
+animation:floatPhoto 6s ease-in-out infinite;
+}
+
+.polaroid img{
+width:100%;
+border-radius:5px;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatPhoto{
+0%,100%{transform:translateY(0px) rotate(-3deg);}
+50%{transform:translateY(-15px) rotate(3deg);}
+}
+
+/* POSITIONS */
+.photo1{ top:10%; left:5%; }
+.photo2{ top:15%; right:5%; }
+.photo3{ bottom:15%; left:8%; }
+.photo4{ bottom:10%; right:8%; }
+
+/* PHONE OPTIMIZATION */
+@media(max-width:600px){
+
+.polaroid{
+width:70px;
+}
+
+.cartoon{
+right:-40px;
+width:60px;
+height:60px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS SCRIPT GENERATED -->
+<script>
+
+for(let i=0;i<25;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💗";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+heart.style.fontSize=(15+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+<!-- POLAROIDS -->
+<div class="polaroid photo1">
+<img src="polaroid1.jpg">
+</div>
+
+<div class="polaroid photo2">
+<img src="polaroid2.jpg">
+</div>
+
+<div class="polaroid photo3">
+<img src="polaroid3.jpg">
+</div>
+
+<div class="polaroid photo4">
+<img src="polaroid4.jpg">
+</div>
+
+<!-- MAIN CARD -->
+<div class="card">
+
+<div class="title">
+Our Love Story 💕
+</div>
+
+<div class="text">
+From the first smile to endless memories, every moment with you feels magical. 
+Lets make this Valentine unforgettable. 💖
+</div>
+
+<button class="btn" onclick="goNext()">Continue 💌</button>
+
+<div class="cartoon">
+<div class="face">
+<div class="eye left"></div>
+<div class="eye right"></div>
+<div class="mouth"></div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+function goNext(){
+
+window.location.href="question.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Gift 💝</title>
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', cursive, sans-serif;}
+
+/* BACKGROUND */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fad0c4, #fbc2eb);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+}
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* FLOATING HEARTS */
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:20px;
+color:#ff4d88;
+animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* MAIN CARD */
+.container{
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(20px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+width:90%;
+max-width:500px;
+position:relative;
+}
+
+/* TITLE */
+.title{
+font-size:32px;
+color:white;
+margin-bottom:25px;
+text-shadow:0 0 10px #ff4d88;
+}
+
+/* BOXES */
+.boxes{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+.box{
+width:100px;
+height:120px;
+background:#ff4d88;
+color:white;
+border-radius:15px;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 0 20px rgba(255,0,100,0.6);
+}
+.box:hover{
+transform:translateY(-10px) scale(1.1);
+}
+
+/* NOTE */
+.note{
+position:absolute;
+top:130px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+color:#ff1493;
+padding:12px 18px;
+border-radius:15px;
+display:none;
+font-weight:bold;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* FALLING POLAROID / VIDEO */
+.polaroid-special{
+position:absolute;
+top:-300px;
+left:50%;
+transform:translateX(-50%) rotate(-10deg);
+width:200px;
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 15px 35px rgba(0,0,0,0.4);
+display:none;
+z-index:5;
+}
+.polaroid-special img,
+.polaroid-special video{
+width:100%;
+border-radius:6px;
+}
+.polaroid-special.show{
+animation:photoFall 1.5s ease forwards;
+}
+@keyframes photoFall{
+0%{top:-300px;transform:translateX(-50%) rotate(-15deg);opacity:0;}
+60%{top:55%;transform:translateX(-50%) rotate(5deg);opacity:1;}
+80%{top:48%;transform:translateX(-50%) rotate(-3deg);}
+100%{top:50%;transform:translateX(-50%) rotate(0deg);}
+}
+
+/* ROSE EXPLOSION */
+.rose{
+position:absolute;
+font-size:24px;
+animation:explode 1.5s forwards;
+}
+@keyframes explode{
+0%{transform:translate(0,0);opacity:1;}
+100%{transform:translate(var(--x), var(--y)) rotate(360deg);opacity:0;}
+}
+
+/* CARTOON */
+.cartoon{
+position:absolute;
+bottom:-20px;
+right:-20px;
+font-size:60px;
+transition:0.3s;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.box{width:80px;height:100px;}
+.polaroid-special{width:150px;}
+.cartoon{font-size:45px;}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING HEARTS -->
+<script>
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💗";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*6)+"s";
+    heart.style.fontSize=(15+Math.random()*15)+"px";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="container">
+
+<div class="title">Choose Your Gift 🎁</div>
+
+<div class="boxes">
+
+<!-- BOX 1 VIDEO POLAROID -->
+<div class="box" onclick="showVideoPolaroid()">Box 1</div>
+
+<!-- BOX 2 POLAROID -->
+<div class="box" onclick="showSecondPolaroid()">Box 2</div>
+
+<!-- BOX 3 ROSE EXPLOSION -->
+<div class="box" onclick="specialGift(this)">Box 3</div>
+
+</div>
+
+<div class="cartoon" id="cartoon">🥰</div>
+
+<!-- VIDEO POLAROID -->
+<div class="polaroid-special" id="videoPolaroid">
+<video width="100%" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div style="margin-top:10px;color:#ff1493;font-weight:bold;">
+"Hizi ndio gani tena mama"😂
+</div>
+</div>
+
+<!-- SECOND POLAROID -->
+<div class="polaroid-special" id="secondPolaroid">
+<img src="photo2.jpg">
+<div style="margin-top:10px;color:#ff1493;font-weight:bold;">
+"A normal day made special" ❤️
+</div>
+</div>
+
+<!-- SPECIAL POLAROID -->
+<div class="polaroid-special" id="specialPolaroid">
+<img src="photo.jpg">
+<div style="margin-top:10px;color:#ff1493;font-weight:bold;">
+Happy Valentine’s Day ❤️
+</div>
+</div>
+
+</div>
+
+<script>
+/* BOX 1 VIDEO POLAROID */
+function showVideoPolaroid(){
+    document.querySelectorAll('.note').forEach(n=>n.style.display='none');
+    document.querySelectorAll('.polaroid-special').forEach(p=>{
+        p.style.display='none';
+        p.classList.remove('show');
+    });
+    let p=document.getElementById('videoPolaroid');
+    p.style.display='block';
+    setTimeout(()=>{p.classList.add('show');},50);
+    document.getElementById('cartoon').innerHTML="😍";
+}
+
+/* BOX 2 POLAROID */
+function showSecondPolaroid(){
+    document.querySelectorAll('.note').forEach(n=>n.style.display='none');
+    document.querySelectorAll('.polaroid-special').forEach(p=>{
+        p.style.display='none';
+        p.classList.remove('show');
+    });
+    let p=document.getElementById('secondPolaroid');
+    p.style.display='block';
+    setTimeout(()=>{p.classList.add('show');},50);
+    document.getElementById('cartoon').innerHTML="😍";
+}
+
+/* BOX 3 ROSE EXPLOSION */
+function specialGift(box){
+    document.querySelectorAll('.note').forEach(n=>n.style.display='none');
+    document.querySelectorAll('.polaroid-special').forEach(p=>{
+        p.style.display='none';
+        p.classList.remove('show');
+    });
+    for(let i=0;i<20;i++){
+        let rose=document.createElement("div");
+        rose.className="rose";
+        rose.innerHTML="🌹";
+        rose.style.left=box.offsetLeft+50+"px";
+        rose.style.top=box.offsetTop+50+"px";
+        rose.style.setProperty("--x",(Math.random()*300-150)+"px");
+        rose.style.setProperty("--y",(Math.random()*300-150)+"px");
+        document.body.appendChild(rose);
+        setTimeout(()=>rose.remove(),1500);
+    }
+    setTimeout(()=>{
+        let p=document.getElementById('specialPolaroid');
+        p.style.display='block';
+        setTimeout(()=>{p.classList.add('show');},50);
+    },1200);
+    document.getElementById('cartoon').innerHTML="😍";
+}
+</script>
+
+</body>
+</html>
